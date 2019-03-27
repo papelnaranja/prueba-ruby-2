@@ -1,0 +1,15 @@
+<%= current_user.name %>
+
+<p id="notice"><%= notice %></p>
+<h1>Assignments</h1>
+
+
+<% @assignments.each do |s| %>
+    <% if s.user.id == current_user.id && s.completed == false %>
+        <img src="<%= s.task.photo  %>" alt="">
+        <%= s.task.description  %>
+        <%= s.task.name %>
+        <%= s.completed %>
+        <%= link_to 'completar', assignment_path(s.id), method: :put %>
+    <% end  %>
+<% end %>

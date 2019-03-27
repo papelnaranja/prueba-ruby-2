@@ -5,4 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :assignments
   has_many :tasks, through: :assignments
+  after_create :set_tasks
+
+  def set_tasks
+    tasks = Task.all
+    tasks.each do |t|
+      self.assignments.build(task_id:t.id)
+      self.save
+    end 
+  end
 end
