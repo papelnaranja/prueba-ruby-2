@@ -10,6 +10,7 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    @sorted = @task.assignments.sort_by { |t| t.updated_at }.take(5)
   end
 
   # GET /tasks/new

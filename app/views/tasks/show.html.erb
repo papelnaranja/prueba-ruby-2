@@ -15,5 +15,29 @@
   <%= @task.description %>
 </p>
 
+
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Usuario</th>
+      <th>Estado de completado</th>
+      <th>Fecha</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <% @sorted.each  do |t| %>
+    <% if  t.completed == true %>
+   <tr>
+      <td><%= t.completed %></td>
+      <td><%= t.user.email %></td>
+      <td><%= t.created_at %></td>
+    </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>

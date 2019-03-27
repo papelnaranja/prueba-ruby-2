@@ -1,15 +1,28 @@
-<%= current_user.name %>
+
 
 <p id="notice"><%= notice %></p>
 <h1>Assignments</h1>
 
+<div class="row">
 
 <% @assignments.each do |s| %>
-    <% if s.user.id == current_user.id && s.completed == false %>
-        <img src="<%= s.task.photo  %>" alt="">
+
+    <% if s.user.id == current_user.id %>
+    <div class="col-md-3">
+    <div class="card">
+        <img src="<%= s.task.photo  %>" alt="" class="card-img-top">
         <%= s.task.description  %>
         <%= s.task.name %>
         <%= s.completed %>
-        <%= link_to 'completar', assignment_path(s.id), method: :put %>
+        <%= link_to 'Show', task_path(s.task.id) %>
+        <% if s.completed == false %>
+            <%= link_to 'completar', assignment_path(s.id), method: :put %>
+        <% else %>
+            <%= link_to 'Descompletar', assignment_path(s.id), method: :put %>
+        <% end %>
+        </div>
+    </div>
     <% end  %>
 <% end %>
+
+</div>
