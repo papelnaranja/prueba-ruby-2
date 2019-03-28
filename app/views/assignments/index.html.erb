@@ -1,6 +1,3 @@
-
-
-<p id="notice"><%= notice %></p>
 <h1>Assignments</h1>
 
 <div class="row">
@@ -11,15 +8,17 @@
     <div class="col-md-3">
     <div class="card">
         <img src="<%= s.task.photo  %>" alt="" class="card-img-top">
-        <%= s.task.description  %>
-        <%= s.task.name %>
-        <%= s.completed %>
-        <%= link_to 'Show', task_path(s.task.id) %>
+        <div class="card-body">
+        <h3 class="card-title"><%= s.task.name %></h3>
+        <p class="card-text"><%= s.task.description  %></p>
+        
         <% if s.completed == false %>
-            <%= link_to 'completar', assignment_path(s.id), method: :put %>
+            <%= link_to 'completar', assignment_path(s.id), method: :put, class:'btn btn-success'%>
         <% else %>
-            <%= link_to 'Descompletar', assignment_path(s.id), method: :put %>
+            <%= link_to 'Descompletar', assignment_path(s.id), method: :put, class:'btn btn-outline-info' %>
         <% end %>
+        <%= link_to 'Ver', task_path(s.task.id), class:'btn btn-link' %>
+        </div>
         </div>
     </div>
     <% end  %>

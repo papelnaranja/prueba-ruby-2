@@ -1,25 +1,19 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @task.name %>
-</p>
+<div class="row">
+  <div class="col-md-4">
+      <div class="card">
+        <img src="<%= @task.photo %>" alt="" class="card-img-top">
+  
+        <div class="card-body">
+          
+          <h3 class="card-title"><%= @task.name  %></h3>
+          <p class="card-text"> <%= @task.description %> </p>
+        </div>
+      </div>
+    </div>
 
-<p>
-  <strong>Photo:</strong>
-  <%= @task.photo %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @task.description %>
-</p>
-
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
-
-
+  <div class="col-md-8">
+    <h4>Primeros en completar la tarea</h4>
 <table class="table">
   <thead>
     <tr>
@@ -41,3 +35,8 @@
   <% end %>
   </tbody>
 </table>
+  </div>
+</div>
+
+
+
