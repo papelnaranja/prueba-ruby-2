@@ -14,27 +14,27 @@
 
   <div class="col-md-8">
     <h4>Primeros en completar la tarea</h4>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Usuario</th>
-      <th>Estado de completado</th>
-      <th>Fecha</th>
-    </tr>
-  </thead>
-  <tbody>
 
-  <% @sorted.each  do |t| %>
-    <% if  t.completed == true %>
-   <tr>
-      <td><%= t.completed %></td>
-      <td><%= t.user.email %></td>
-      <td><%= t.created_at %></td>
-    </tr>
-    <% end %>
+  <% @first_five.each  do |t| %>
+    <div class="card card-topfive">
+      <div class="card-body">
+        <img src="<%= t.user.avatar %>" alt="avatar" class="rounded-circle">
+        <p class="name"> <strong><%= t.user.email %> </strong ><%= t.created_at %></p>
+        
+      </div>
+    </div>
   <% end %>
-  </tbody>
-</table>
+
+<div class="list-section">
+<h3>Otros usuarios que completaron la tarea</h3>
+<ul class="list">
+<% @lasts.each  do |t| %>
+  <li><%= t.user.email %></li>
+<% end %>
+</ul>
+
+</div>
+
   </div>
 </div>
 

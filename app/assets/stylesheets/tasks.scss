@@ -1,3 +1,14 @@
 // Place all the styles related to the Tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.card-topfive {
+    .card-body {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    p {
+        margin-left:20px;
+    }
+}

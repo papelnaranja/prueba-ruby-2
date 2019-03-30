@@ -10,9 +10,15 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
-    @sorted = @task.assignments.sort_by { |t| t.updated_at }.take(5)
+    #@sorted = @task.assignments.sort_by { |t| t.updated_at }.take(5)
+    @completed = @task.assignments.select {|t| t.completed == true}
+    @sorted = @completed.sort_by { |t| t.updated_at }
+    array_of_firsts = []
+    @first_five =  @sorted[0,5] {|f , array_of_firsts| array_of_firsts << f }
+    lasts = []
+    @lasts = @sorted[-1,5]{|l , lasts| lasts << f }
+    
   end
-
   # GET /tasks/new
   def new
     @task = Task.new
